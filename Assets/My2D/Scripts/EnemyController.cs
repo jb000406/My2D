@@ -10,8 +10,14 @@ namespace My2D
         private Rigidbody2D rb2D;
         private Animator animator;
         private TouchingDirections touchingDirections;
+        private Damageable damageable;
+
+
         //플레이어 감지
         public DetectionZone detectionZone;
+        //낭떨어지 감지
+        public DetectionZone detectionCliff;
+        
 
         //이동속도
         [SerializeField] private float runSpeed = 4f;
@@ -73,6 +79,11 @@ namespace My2D
             rb2D = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             touchingDirections = GetComponent<TouchingDirections>();
+
+            damageable = GetComponent<Damageable>();
+            damageable.hitAction += OnHit;
+
+            detectionCliff.noColliderRemain += OnCliffDetection;
         }
 
         private void Update()
@@ -117,6 +128,19 @@ namespace My2D
             else
             {
                 Debug.Log("Error Flip Direction");
+            }
+        }
+
+        public void OnHit(float damage, Vector2 knockback)
+        {
+            rb2D.velocity = new Vector2(knockback.x, rb2D.velocity.y * knockback.y);
+        }
+
+        public void OnCliffDetection()
+        {
+            if (touchingDirections.IsGround)
+            {
+                Flip();
             }
         }
     }

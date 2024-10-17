@@ -146,6 +146,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: LockVelocity
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -234,6 +240,23 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &978791735795123499
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685e424a41f7e21479a7c92ef712a3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolName: LockVelocity
+  updateOnState: 1
+  updateOnStateMachine: 0
+  valueEnter: 1
+  valueExit: 0
 --- !u!1109 &1110328958625963111
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -347,7 +370,7 @@ MonoBehaviour:
   updateOnState: 1
   updateOnStateMachine: 0
   valueEnter: 0
-  valueExit: 1
+  valueExit: 0
 --- !u!1102 &5534011457654747405
 AnimatorState:
   serializedVersion: 6
@@ -362,6 +385,7 @@ AnimatorState:
   - {fileID: 5800407909909168521}
   m_StateMachineBehaviours:
   - {fileID: -6963054876424464073}
+  - {fileID: 978791735795123499}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -458,10 +482,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boolName: CanMove
-  updateOnState: 1
-  updateOnStateMachine: 0
+  updateOnState: 0
+  updateOnStateMachine: 1
   valueEnter: 0
-  valueExit: 0
+  valueExit: 1
 --- !u!114 &9215084512511297891
 MonoBehaviour:
   m_ObjectHideFlags: 1
